@@ -23,7 +23,7 @@ public class Application {
             pool.submit(app.newRegister());
         }
         pool.shutdown();
-        System.out.println("Shop is closed!")
+   
     }
 
     private Register newRegister()
