@@ -21,6 +21,7 @@ public class Application {
 
         ExecutorService pool = Executors.newFixedThreadPool(6);
         for (int i = 0; i < 6; i++) {
+            System.out.println("REGISTER NUMBER: " + (i + 1));
             pool.submit(app.newRegister());
             Thread.currentThread().sleep(200);
         }
