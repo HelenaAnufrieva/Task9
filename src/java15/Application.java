@@ -18,12 +18,14 @@ public class Application {
 
     public static void main(String[] args) throws InterruptedException {
         Application app = new Application();
-        ExecutorService pool = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 5; i++) {
+
+        ExecutorService pool = Executors.newFixedThreadPool(6);
+        for (int i = 0; i < 6; i++) {
             pool.submit(app.newRegister());
+            Thread.currentThread().sleep(200);
         }
         pool.shutdown();
-   
+        System.out.println("Shop is closed!");
     }
 
     private Register newRegister()
@@ -50,19 +52,28 @@ public class Application {
     private Cashier randomCashier()
     {
         if(new Random().nextInt(2) == 0) {
+            System.out.println("Nice Cashier");
             return new NiceCashier();
+
         }
         else {
             if(new Random().nextBoolean()) {
+                System.out.println(" Normal Cashier");
                 return new NormalCashier();
+
             }
             else {
+                System.out.println("Strange Cashier");
                 return new StrangeCashier();
             }
         }
     }
 
 }
+
+
+
+
 
 
 
